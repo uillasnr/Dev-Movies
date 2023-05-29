@@ -6,6 +6,7 @@ import Card from '../Card'
 import { Container } from './styles'
 
 function Slider({ info, title }) {
+  console.log(info, title)
   return (
     <Container>
       <h2>{title}</h2>
@@ -16,7 +17,7 @@ function Slider({ info, title }) {
         className="swiper"
       >
         {info.map((item, index) => (
-          <SwiperSlide Kay={index}>
+          <SwiperSlide key={index}>
             <Card item={item} />
           </SwiperSlide>
         ))}
@@ -24,4 +25,5 @@ function Slider({ info, title }) {
     </Container>
   )
 }
+
 export default Slider

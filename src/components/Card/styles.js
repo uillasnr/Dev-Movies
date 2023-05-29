@@ -8,11 +8,12 @@ export const Container = styled.div`
 
   img {
     border-radius: 30px;
-    width: 300px;
+    width: 200px;
     height: 100%;
   }
   h3 {
     color: #fff;
     margin-top: 15px;
+    font-size: 0.7rem;
   }
 `
