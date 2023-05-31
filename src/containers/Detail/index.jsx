@@ -1,32 +1,35 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
+import Credits from '../../components/Credits'
+import Slider from '../../components/Slider'
+import SpanGenres from '../../components/SpanGenres'
 import {
-  getMovies,
-  getMoviesVideos,
   getMovieCredits,
+  getMovies,
+  getMovieVideos,
   getMovieSimilar
 } from '../../services/getData'
 import { getImages } from '../../utils/getImages'
-import { Container, Background, Cover, Info } from './styles'
+import { Container, Background, Cover, Info, ContainerMovies } from './styles'
 
 function Detail() {
   const { id } = useParams()
-  const [movie, setMovie] = useState()
-  const [movieVideos, setMovieVideos] = useState()
-  const [movieCredits, setMovieCredits] = useState()
-  const [movieSimilar, setMovieSimilar] = useState()
+  const [movie, setMovies] = useState([])
+  const [movieVideos, setMovieVideos] = useState([])
+  const [movieCredits, setMovieCredits] = useState([])
+  const [movieSimilar, setMovieSimilar] = useState([])
 
   useEffect(() => {
-    async function getAllData() {
-      setMovie(await getMovies())
-      setMovieVideos(await getMoviesVideos())
-      setMovieCredits(await getMovieCredits())
-      setMovieSimilar(await getMovieSimilar())
+    async function getData() {
+      setMovies(await getMovies(id))
+      setMovieVideos(await getMovieVideos(id))
+      setMovieCredits(await getMovieCredits(id))
+      setMovieSimilar(await getMovieSimilar(id))
     }
 
-    getAllData()
-  }, [])
+    getData()
+  }, [id])
   return (
     <>
       {movie && (
@@ -38,11 +41,30 @@ function Detail() {
             </Cover>
             <Info>
               <h2>{movie.title}</h2>
-              <div>generos do filmes</div>
+              <SpanGenres genres={movie.genres} />
               <p>{movie.overview}</p>
-              <div>Creditos</div>
+              <div>
+                <Credits credits={movieCredits} />
+              </div>
             </Info>
           </Container>
+          <ContainerMovies>
+            {movieVideos &&
+              movieVideos.map((video) => (
+                <div key={video.id}>
+                  <h4>{video.name}</h4>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${video.key}`}
+                    title="Youtube Video Player"
+                    height="500px"
+                    width="100%"
+                  ></iframe>
+                </div>
+              ))}
+          </ContainerMovies>
+          {movieSimilar && (
+            <Slider info={movieSimilar} title={'Filmes Similares'} />
+          )}
         </>
       )}
     </>
