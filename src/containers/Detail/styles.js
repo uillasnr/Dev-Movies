@@ -44,6 +44,16 @@ export const Container = styled.div`
   height: 100%;
   max-width: 1500px;
   margin-top: -100px;
+
+  @media (max-width: 1130px) {
+    margin-left: -100px;
+  }
+  @media (max-width: 940px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 `
 export const Cover = styled.div`
   padding: 20px;
@@ -53,10 +63,26 @@ export const Cover = styled.div`
   z-index: 99;
 
   img {
-    width: 400px;
+    width: 290px;
     border-radius: 30px;
     box-shadow: rgb(100 100 111/ 20%) 0px 7px 29px 0px;
     animation: ${scale} 0.5s linear;
+  }
+
+  @media (max-width: 1025px) {
+    img {
+      width: 55%;
+      margin-left: 133px;
+    }
+  }
+  @media (max-width: 940px) {
+    img {
+      width: 20%;
+      margin-left: 180px;
+    }
+  }
+  @media (max-width: 715px) {
+    margin-left: -80px;
   }
 `
 export const Info = styled.div`
@@ -78,6 +104,23 @@ export const Info = styled.div`
     color: #fff;
     margin-top: 20px;
     margin-bottom: 30px;
+  }
+
+  @media (max-width: 1025px) {
+    width: 65%;
+  }
+  @media (max-width: 715px) {
+    width: 70%;
+  }
+  @media (max-width: 510px) {
+    width: 70%;
+    margin-left: 27px;
+    h2 {
+      font-size: 2.1rem;
+    }
+    p {
+      font-size: 12px;
+    }
   }
 `
 export const ContainerMovies = styled.div`
@@ -104,5 +147,12 @@ export const ContainerMovies = styled.div`
   }
   iframe {
     border: none;
+  }
+
+  @media (max-width: 600px) {
+    iframe {
+      width: 85%;
+      height: 324px;
+    }
   }
 `

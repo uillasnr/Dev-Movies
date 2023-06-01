@@ -16,4 +16,13 @@ export const Container = styled.div`
     margin-top: 15px;
     font-size: 0.7rem;
   }
+  @media (max-width: 800px) {
+    width: 80%;
+  }
+  @media (max-width: 600px) {
+    width: 60%;
+  }
+  @media (max-width: 400px) {
+    width: 65%;
+  }
 `

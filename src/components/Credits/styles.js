@@ -13,11 +13,20 @@ export const Container = styled.div`
     color: #ffffff;
   }
   img {
-    height: 200px;
+    height: 180px;
+  }
+  @media (max-width: 700px) {
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 `
 export const Title = styled.h4`
   color: #ffffff;
   font-size: 28px;
   font-weight: 700;
+  @media (max-width: 700px) {
+    font-size: 0.9rem;
+  }
 `

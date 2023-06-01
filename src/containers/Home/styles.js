@@ -32,7 +32,6 @@ export const Info = styled.div`
   padding: 20px;
   width: 50%;
   h1 {
-    /* font-size: 50px; */
     font-size: 2.8rem;
     font-weight: 700;
     color: #ffffff;
@@ -45,12 +44,71 @@ export const Info = styled.div`
     margin-top: 30px;
     margin-bottom: 20px;
   }
+  @media (max-width: 720px) {
+    h1 {
+      font-size: 1.9rem;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 600px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    h1 {
+      font-size: 1.9rem;
+      width: 450px;
+      width: 385px;
+      display: flex;
+      text-align: center;
+    }
+    p {
+      font-size: 16px;
+      width: 450px;
+      display: flex;
+      text-align: center;
+    }
+  }
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.9rem;
+      width: 450px;
+      width: 385px;
+      display: flex;
+      text-align: center;
+    }
+    p {
+      font-size: 13px;
+      width: 395px;
+      display: flex;
+      text-align: center;
+    }
+  }
+  @media (max-width: 420px) {
+    h1 {
+      font-size: 1.5rem;
+      width: 303px;
+      display: flex;
+      text-align: center;
+    }
+    p {
+      font-size: 12px;
+      width: 330px;
+      display: flex;
+      text-align: center;
+    }
+  }
 `
 export const Poster = styled.div`
   z-index: 2;
   img {
-    width: 335px;
+    width: 290px;
     border-radius: 30px;
+  }
+  @media (max-width: 600px) {
+    display: none;
   }
 `
 
