@@ -16,6 +16,12 @@ export const Container = styled.div`
   img {
     width: 30%;
   }
+
+  input {
+    background: #fff;
+    width: 250px;
+    padding-left: 20px;
+  }
 `
 export const Menu = styled.ul`
   display: flex;
