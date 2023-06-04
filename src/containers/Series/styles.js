@@ -9,6 +9,7 @@ export const Container = styled.div`
   row-gap: 3rem;
   padding: 15px;
   div {
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,32 +1,36 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-import api from '../../services/api'
+import { getMovieLists } from '../../services/getData'
+import { getImages } from '../../utils/getImages'
 import { Container } from './styles'
 
-function Movies({ movieId }) {
+function Movies() {
   const [movieLists, setMovieLists] = useState([])
 
   useEffect(() => {
-    async function getMovieLists() {
-      const {
-        data: { results }
-      } = await api.get(`/movie/tv/recommendations`)
-
-      console.log(results)
-      setMovieLists(results)
+    async function getAllData() {
+      setMovieLists(await getMovieLists())
     }
 
-    getMovieLists()
+    getAllData()
   }, [])
 
   return (
     <Container>
-      <h1>filmes</h1>
       {movieLists.map((movie) => (
-        <p key={movie.id}>{movie.title}</p>
+        <Link
+          key={movie.id}
+          style={{ textDecoration: 'none' }}
+          to={`/detalhe/${movie.id}`}
+        >
+          <div>
+            <img src={getImages(movie.poster_path)} alt="" />
+            <p>{movie.title}</p>
+          </div>
+        </Link>
       ))}
     </Container>
   )
 }
-
 export default Movies

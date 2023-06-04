@@ -6,23 +6,23 @@ import Slider from '../../components/Slider'
 import SpanGenres from '../../components/SpanGenres'
 import {
   getMovieCredits,
-  getMovies,
+  getDetail,
   getMovieVideos,
   getMovieSimilar
 } from '../../services/getData'
 import { getImages } from '../../utils/getImages'
 import { Container, Background, Cover, Info, ContainerMovies } from './styles'
 
-function Detail() {
+function DetailMovie() {
   const { id } = useParams()
-  const [movie, setMovies] = useState([])
-  const [movieVideos, setMovieVideos] = useState([])
-  const [movieCredits, setMovieCredits] = useState([])
-  const [movieSimilar, setMovieSimilar] = useState([])
+  const [movie, setMovies] = useState()
+  const [movieVideos, setMovieVideos] = useState()
+  const [movieCredits, setMovieCredits] = useState()
+  const [movieSimilar, setMovieSimilar] = useState()
 
   useEffect(() => {
     async function getData() {
-      setMovies(await getMovies(id))
+      setMovies(await getDetail(id))
       setMovieVideos(await getMovieVideos(id))
       setMovieCredits(await getMovieCredits(id))
       setMovieSimilar(await getMovieSimilar(id))
@@ -30,6 +30,7 @@ function Detail() {
 
     getData()
   }, [id])
+
   return (
     <>
       {movie && (
@@ -71,4 +72,4 @@ function Detail() {
   )
 }
 
-export default Detail
+export default DetailMovie

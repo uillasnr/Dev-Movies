@@ -76,7 +76,28 @@ export async function getMovieById(movieId) {
 export async function getSeries() {
   const {
     data: { results }
-  } = await api.get(`/movie/tv/recommendations`)
-  console.log(results)
+  } = await api.get('/tv/popular', {
+    params: {
+      page: 2 // Defina o número da página que deseja obter (começando em 1)
+    }
+  })
+
   return results
+}
+export async function getMovieLists() {
+  const {
+    data: { results }
+  } = await api.get(`/movie/popular`)
+
+  return results
+}
+
+export async function getDetail(id) {
+  const { data } = await api.get(`/movie/${id}`)
+  return data
+}
+export async function getDetailSeries(id) {
+  const { data } = await api.get(`/tv/${id}`)
+  console.log(data)
+  return data
 }

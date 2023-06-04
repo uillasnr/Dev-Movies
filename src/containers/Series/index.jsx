@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { getSeries } from '../../services/getData'
+import { getImages } from '../../utils/getImages'
+import { Container } from './styles'
 
 function Series() {
   const [series, setSeries] = useState([])
@@ -14,12 +17,20 @@ function Series() {
   }, [])
 
   return (
-    <div>
-      <h1>Séries</h1>
-      {series.map((serie) => (
-        <p key={serie.id}>{serie.title}</p>
+    <Container>
+      {series.map((series) => (
+        <Link
+          key={series.id}
+          style={{ textDecoration: 'none' }}
+          to={`/detalhe/${series.id}`}
+        >
+          <div>
+            <img src={getImages(series.poster_path)} alt="" />
+            <p>{series.title}</p>
+          </div>
+        </Link>
       ))}
-    </div>
+    </Container>
   )
 }
 
