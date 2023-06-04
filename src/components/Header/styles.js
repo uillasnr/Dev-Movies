@@ -13,21 +13,35 @@ export const Container = styled.div`
     props.changeBackground ? '#000' : 'transparent'};
   transition: background-color 0.6s ease-in-out;
 
-  img {
-    width: 30%;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
   }
-
-  input {
-    background: #fff;
-    width: 250px;
-    padding-left: 20px;
+  @media (max-width: 1085px) {
+    width: 85%;
   }
+  @media (max-width: 1020px) {
+    width: 75%;
+  }
+  @media (max-width: 950px) {
+    width: 53%;
+  }
+`
+export const LogoImg = styled.img`
+  width: 30%;
 `
 export const Menu = styled.ul`
   display: flex;
   list-style: none;
   gap: 50px;
+  /* Estilos para telas menores que 768px */
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `
+
 export const Li = styled.li`
   font-weight: 600;
   cursor: pointer;
@@ -52,5 +66,8 @@ export const Li = styled.li`
   }
   &:hover::after {
     width: 100%;
+  }
+  @media (max-width: 1020px) {
+    font-size: 22px;
   }
 `
