@@ -46,7 +46,7 @@ export async function getMovieVideos(movieId) {
   const {
     data: { results }
   } = await api.get(`/movie/${movieId}/videos`)
-
+  console.log(results)
   return results
 }
 
@@ -71,8 +71,26 @@ export async function getMovieById(movieId) {
 
   return data
 }
-/// /////////////////////////////
 
+export async function getMovieLists() {
+  const {
+    data: { results }
+  } = await api.get(`/movie/popular`)
+
+  return results
+}
+
+export async function getDetailMovie(id) {
+  const { data } = await api.get(`/movie/${id}`)
+  console.log(data)
+  return data
+}
+// DetailSeries
+export async function getDetailSeries(id) {
+  const { data } = await api.get(`/tv/${id}`)
+  console.log(data)
+  return data
+}
 export async function getSeries() {
   const {
     data: { results }
@@ -84,20 +102,25 @@ export async function getSeries() {
 
   return results
 }
-export async function getMovieLists() {
+
+export async function getSeriesVideos(id) {
   const {
     data: { results }
-  } = await api.get(`/movie/popular`)
+  } = await api.get(`/tv/${id}/videos`)
+  console.log(results)
+  return results
+}
+export async function getSerieSimilar(id) {
+  const {
+    data: { results }
+  } = await api.get(`/tv/${id}/similar`)
 
   return results
 }
-
-export async function getDetail(id) {
-  const { data } = await api.get(`/movie/${id}`)
-  return data
-}
-export async function getDetailSeries(id) {
-  const { data } = await api.get(`/tv/${id}`)
-  console.log(data)
-  return data
+export async function getSerieCredits(id) {
+  const {
+    data: { cast }
+  } = await api.get(`/tv/${id}/credits`)
+  console.log(cast)
+  return cast
 }

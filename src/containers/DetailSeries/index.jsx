@@ -5,27 +5,27 @@ import Credits from '../../components/Credits'
 import Slider from '../../components/Slider'
 import SpanGenres from '../../components/SpanGenres'
 import {
-  getMovieCredits,
-  getDetailMovie,
-  getMovieVideos,
-  getMovieSimilar
+  getDetailSeries,
+  getSerieCredits,
+  getSeriesVideos,
+  getSerieSimilar
 } from '../../services/getData'
 import { getImages } from '../../utils/getImages'
 import { Container, Background, Cover, Info, ContainerMovies } from './styles'
 
-function DetailMovie() {
+function DetailSeries() {
   const { id } = useParams()
-  const [movie, setMovies] = useState()
-  const [movieVideos, setMovieVideos] = useState()
-  const [movieCredits, setMovieCredits] = useState()
-  const [movieSimilar, setMovieSimilar] = useState()
+  const [series, setSeries] = useState([])
+  const [seriesVideos, setSeriesVideos] = useState([])
+  const [serieCredits, setSerieCredits] = useState()
+  const [SerieSimilar, setSerieSimilar] = useState()
 
   useEffect(() => {
     async function getData() {
-      setMovies(await getDetailMovie(id))
-      setMovieVideos(await getMovieVideos(id))
-      setMovieCredits(await getMovieCredits(id))
-      setMovieSimilar(await getMovieSimilar(id))
+      setSeries(await getDetailSeries(id))
+      setSeriesVideos(await getSeriesVideos(id))
+      setSerieCredits(await getSerieCredits(id))
+      setSerieSimilar(await getSerieSimilar(id))
     }
 
     getData()
@@ -33,25 +33,25 @@ function DetailMovie() {
 
   return (
     <>
-      {movie && (
+      {series && (
         <>
-          <Background image={getImages(movie.backdrop_path)} />
+          <Background image={getImages(series.backdrop_path)} />
           <Container>
             <Cover>
-              <img src={getImages(movie.poster_path)} />
+              <img src={getImages(series.poster_path)} />
             </Cover>
             <Info>
-              <h2>{movie.title}</h2>
-              <SpanGenres genres={movie.genres} />
-              <p>{movie.overview}</p>
+              <h2>{series.title}</h2>
+              <SpanGenres genres={series.genres} />
+              <p>{series.overview}</p>
               <div>
-                <Credits credits={movieCredits} />
+                <Credits credits={serieCredits} />
               </div>
             </Info>
           </Container>
           <ContainerMovies>
-            {movieVideos &&
-              movieVideos.map((video) => (
+            {seriesVideos &&
+              seriesVideos.map((video) => (
                 <div key={video.id}>
                   <h4>{video.name}</h4>
                   <iframe
@@ -63,8 +63,8 @@ function DetailMovie() {
                 </div>
               ))}
           </ContainerMovies>
-          {movieSimilar && (
-            <Slider info={movieSimilar} title={'Filmes Similares'} />
+          {SerieSimilar && (
+            <Slider info={SerieSimilar} title={'Filmes Similares'} />
           )}
         </>
       )}
@@ -72,4 +72,4 @@ function DetailMovie() {
   )
 }
 
-export default DetailMovie
+export default DetailSeries

@@ -9,9 +9,11 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 15px 50px;
-  background-color: ${(props) =>
-    props.changeBackground ? '#000' : 'transparent'};
-  transition: background-color 0.6s ease-in-out;
+  background-image: ${(props) =>
+    props.changeBackground
+      ? 'linear-gradient(to bottom, rgb(225 217 217), rgba(0, 0, 0, 0))'
+      : 'none'};
+  transition: background-image 0.6s ease-in-out;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -59,7 +61,7 @@ export const Li = styled.li`
     width: ${(props) => (props.isActive ? '100%' : 0)};
     background-color: #189b20;
     position: absolute;
-    bottom: -10px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
     transition: width 0.5s ease-in-out;

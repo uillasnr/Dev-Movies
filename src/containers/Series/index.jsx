@@ -22,7 +22,7 @@ function Series() {
         <Link
           key={series.id}
           style={{ textDecoration: 'none' }}
-          to={`/detalhe/${series.id}`}
+          to={`/detalhe/Series/${series.id}`}
         >
           <div>
             <img src={getImages(series.poster_path)} alt="" />

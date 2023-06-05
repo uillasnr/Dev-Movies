@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
+import SearchInput from '../../assets/search.png'
 import api from '../../services/api'
 import { getMovies } from '../../services/getData'
 import { getImages } from '../../utils/getImages'
-import { Container, Pesquiza, Img } from './styles'
+import { Container, Img, ContainerSearch } from './styles'
 
 function Search() {
-  const [movie, setMovie] = useState(null)
   const [search, setSearch] = useState('')
   const [searchResults, setSearchResults] = useState([]) // Estado para armazenar os resultados da pesquisa
+  const searchRef = useRef()
 
   useEffect(() => {
     async function searchMovies() {
@@ -20,7 +22,7 @@ function Search() {
             query: search
           }
         })
-        console.log(results)
+        /*    console.log(results) */
         setSearchResults(results) // Atualiza o estado com os resultados da pesquisa
       }
     }
@@ -30,7 +32,7 @@ function Search() {
 
   useEffect(() => {
     async function getAllData() {
-      setMovie(await getMovies())
+      setSearch(await getMovies())
     }
 
     getAllData()
@@ -40,28 +42,57 @@ function Search() {
     setSearch(event.target.value)
   }
 
+  // resultados da pesquisa desapareçam quando o usuário clicar
+  useEffect(() => {
+    function handleOutsideClick(event) {
+      if (!searchRef.current.contains(event.target)) {
+        setSearch('')
+        setSearchResults([])
+      }
+    }
+    document.addEventListener('click', handleOutsideClick)
+    return () => {
+      document.removeEventListener('click', handleOutsideClick)
+    }
+  }, [])
+
+  const handleItemClick = () => {
+    setSearch('')
+    setSearchResults([])
+  }
+
   return (
     <Container>
       <input
         type="text"
-        value={search} // Define o valor do campo de input como o estado search
+        value={search}
         onChange={handleChange}
-        placeholder="procurar"
-      />
-
-      <Pesquiza>
+        placeholder="Procurar"
+      ></input>
+      <img src={SearchInput} alt="Search Icon" />
+      <ContainerSearch ref={searchRef}>
         <div>
           {searchResults.map((result) => (
-            <p key={result.id}>
-              {' '}
-              {result.title}
-              {movie && (
+            <Link
+              key={result.id}
+              style={{
+                textDecoration: 'none',
+                display: 'flex',
+                direction: 'rtl',
+                textAlign: 'center',
+                color: '#fff'
+              }}
+              to={`/detalhe/${result.id}`}
+              onClick={handleItemClick}
+            >
+              <p>{result.title}</p>
+              {search && (
                 <Img alt="capa-do-filme" src={getImages(result.poster_path)} />
-              )}{' '}
-            </p>
+              )}
+            </Link>
           ))}
         </div>
-      </Pesquiza>
+      </ContainerSearch>
     </Container>
   )
 }
