@@ -18,24 +18,32 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-  }
-  @media (max-width: 1085px) {
-    width: 85%;
-  }
-  @media (max-width: 1020px) {
-    width: 75%;
-  }
-  @media (max-width: 950px) {
-    width: 53%;
+    padding: 15px;
   }
 `
+
 export const LogoImg = styled.img`
   width: 30%;
+
+  @media (max-width: 768px) {
+    width: 50%;
+  }
 `
+
 export const Menu = styled.ul`
   display: flex;
   list-style: none;
   gap: 50px;
+
+  @media (max-width: 1020px) {
+    font-size: 22px;
+    gap: 30px;
+  }
+  @media (max-width: 768px) {
+    font-size: 18px;
+    gap: 20px;
+  }
+
   /* Estilos para telas menores que 768px */
   @media (max-width: 768px) {
     display: flex;
