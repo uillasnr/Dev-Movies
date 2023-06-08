@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -8,9 +9,34 @@ import { Container } from './styles'
 
 function Slider({ info, title }) {
   const breakpoints = {
+    390: {
+      slidesPerView: 3,
+      spaceBetween: -50
+    },
+    445: {
+      slidesPerView: 3,
+      spaceBetween: -80
+    },
+    450: {
+      slidesPerView: 3,
+      spaceBetween: -80
+    },
     480: {
-      slidesPerView: 2,
+      slidesPerView: 3,
       spaceBetween: -100
+    },
+    500: {
+      slidesPerView: 3,
+      spaceBetween: -100
+    },
+    550: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+
+    600: {
+      slidesPerView: 3,
+      spaceBetween: 20
     },
     660: {
       slidesPerView: 3,
@@ -25,15 +51,15 @@ function Slider({ info, title }) {
       spaceBetween: 20
     },
     800: {
-      slidesPerView: 3,
+      slidesPerView: 4,
       spaceBetween: 20
     },
     880: {
-      slidesPerView: 3,
+      slidesPerView: 4,
       spaceBetween: 20
     },
     900: {
-      slidesPerView: 3,
+      slidesPerView: 4,
       spaceBetween: 20
     },
     950: {
@@ -70,7 +96,9 @@ function Slider({ info, title }) {
       >
         {info.map((item, index) => (
           <SwiperSlide key={index}>
-            <Card item={item} />
+            <Link to={`/detalhe/${item.id}`}>
+              <Card item={item} />
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

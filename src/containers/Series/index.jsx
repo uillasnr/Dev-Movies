@@ -26,7 +26,7 @@ function Series() {
         >
           <div>
             <img src={getImages(series.poster_path)} alt="" />
-            <p>{series.title}</p>
+            <p>{series.name}</p>
           </div>
         </Link>
       ))}

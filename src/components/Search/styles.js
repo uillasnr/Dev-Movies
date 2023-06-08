@@ -4,36 +4,29 @@ export const Container = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+`
+export const Input = styled.input`
+  font-size: 14px;
+  color: #202124;
+  z-index: 3;
+  height: 44px;
+  background: white;
+  border: 1px solid #dfe1e5;
+  box-shadow: none;
+  border-radius: 24px;
+  padding-left: 90px;
+  width: 280px;
+  max-width: 100%;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
+  &:hover {
+    box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+    border-color: rgba(223, 225, 229, 0);
   }
 
-  input {
-    font-size: 14px;
-    color: #202124;
-    z-index: 3;
-    height: 44px;
-    background: white;
-    border: 1px solid #dfe1e5;
-    box-shadow: none;
-    border-radius: 24px;
-    padding-left: 90px;
-    width: 280px;
-    max-width: 224px;
-
-    @media (max-width: 768px) {
-      width: 100%;
-      max-width: 100%;
-      margin-bottom: 10px;
-      display: ${(props) => (props.showInput ? 'block' : 'none')};
-    }
-
-    &:hover {
-      box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
-      border-color: rgba(223, 225, 229, 0);
-    }
+  @media (max-width: 768px) {
+    display: ${({ showInput }) => (showInput ? 'block' : 'none')};
+    width: 100%;
+    padding-left: 16px;
   }
 `
 export const SearchIcon = styled.img`
@@ -43,6 +36,16 @@ export const SearchIcon = styled.img`
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
+  z-index: 9;
+
+  @media (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+    margin-left: auto;
+    margin-right: 10px;
+    margin-top: 5px;
+    padding: 0;
+  }
 `
 
 export const Img = styled.img`
@@ -52,10 +55,15 @@ export const Img = styled.img`
 `
 
 export const ContainerSearch = styled.div`
-  position: relative;
+  position: absolute;
   display: block;
   align-items: center;
   padding: 10px;
+  width: 100%;
+  max-width: 300px;
+
+  top: 100%;
+  left: 0;
 
   p {
     display: flex;
@@ -70,23 +78,22 @@ export const ContainerSearch = styled.div`
   div {
     width: 100%;
     max-width: 300px;
-    background-color: #ffffff; /* Defina o estilo de fundo desejado */
+    background-color: #ffffff;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 10px;
     z-index: 10000;
   }
-`
-export const Button = styled.button`
-  display: none;
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-  margin-left: 10px;
 
-  @media (max-width: 768px) {
-    display: block;
+  @media screen and (max-width: 768px) {
+    /* Estilos para telas com largura máxima de 768px (versão mobile) */
+    p {
+      width: auto;
+      font-size: 12px;
+    }
+
+    div {
+      max-width: 100%;
+    }
   }
 `

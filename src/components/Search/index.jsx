@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 import SearchInput from '../../assets/search.png'
 import api from '../../services/api'
 import { getImages } from '../../utils/getImages'
-import { Container, Img, ContainerSearch, SearchIcon, Button } from './styles'
+import { Container, Img, ContainerSearch, SearchIcon, Input } from './styles'
 
 function Search() {
   const [search, setSearch] = useState('')
   const [searchResults, setSearchResults] = useState([])
-  const [showInput, setShowInput] = useState(false)
+  const [showInput, setShowInput] = useState(true)
 
   const searchRef = useRef()
 
@@ -54,21 +54,28 @@ function Search() {
   }
 
   const handleButtonClick = () => {
-    setShowInput(!showInput)
+    setShowInput((prevShowInput) => !prevShowInput)
   }
 
   return (
-    <Container showInput={showInput}>
-      <Button onClick={handleButtonClick}>Search</Button>
-      <input
-        type="text"
-        value={search}
-        onChange={handleChange}
-        placeholder="Busca"
-      />
-      <SearchIcon src={SearchInput} alt="Search Icon" />
-
+    <Container>
       {showInput && (
+        <Input
+          type="text"
+          value={search}
+          onChange={handleChange}
+          placeholder="Busca"
+          showInput={showInput} // Adicione essa linha
+        />
+      )}
+      <SearchIcon
+        src={SearchInput}
+        onClick={handleButtonClick}
+        alt="Search Icon"
+        showInput={showInput}
+      />
+
+      {showInput && search && (
         <ContainerSearch ref={searchRef}>
           <div>
             {searchResults.map((result) => (
@@ -92,4 +99,5 @@ function Search() {
     </Container>
   )
 }
+
 export default Search

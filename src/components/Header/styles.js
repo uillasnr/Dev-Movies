@@ -46,7 +46,7 @@ export const Menu = styled.ul`
 
   /* Estilos para telas menores que 768px */
   @media (max-width: 768px) {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
   }

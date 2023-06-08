@@ -99,7 +99,7 @@ export async function getSeries() {
       page: 2 // Defina o número da página que deseja obter (começando em 1)
     }
   })
-
+  console.log(results)
   return results
 }
 
