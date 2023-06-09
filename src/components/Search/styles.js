@@ -14,15 +14,23 @@ export const Input = styled.input`
   border: 1px solid #dfe1e5;
   box-shadow: none;
   border-radius: 24px;
-  padding-left: 90px;
   width: 280px;
   max-width: 100%;
+  margin: 0px 20px;
+
+  &::placeholder {
+    text-align: center;
+    color: #b0b0b0;
+  }
 
   &:hover {
     box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
     border-color: rgba(223, 225, 229, 0);
   }
-
+  @media (max-width: 930px) {
+    width: 100%;
+    padding-left: 16px;
+  }
   @media (max-width: 768px) {
     display: ${({ showInput }) => (showInput ? 'block' : 'none')};
     width: 100%;
@@ -31,7 +39,7 @@ export const Input = styled.input`
 `
 export const SearchIcon = styled.img`
   position: absolute;
-  left: 20px; /* Posicione a imagem no canto esquerdo do input */
+  left: 40px;
   top: 50%;
   transform: translateY(-50%);
   width: 20px;

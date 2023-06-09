@@ -48,11 +48,19 @@ export const Container = styled.div`
   @media (max-width: 1130px) {
     margin-left: -100px;
   }
+  @media (max-width: 1024px) {
+    margin-left: -100px;
+    width: 100%;
+  }
   @media (max-width: 940px) {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    margin: 0;
   }
 `
 export const Cover = styled.div`
@@ -71,18 +79,20 @@ export const Cover = styled.div`
 
   @media (max-width: 1025px) {
     img {
-      width: 55%;
-      margin-left: 133px;
+      width: 60%;
+      margin-left: 145px;
     }
   }
   @media (max-width: 940px) {
+    width: 50%;
     img {
-      width: 20%;
-      margin-left: 180px;
+      width: 50%;
+      margin-left: 95px;
+      border-radius: 20px;
     }
   }
-  @media (max-width: 715px) {
-    margin-left: -80px;
+  @media (max-width: 768px) {
+    display: none;
   }
 `
 export const Info = styled.div`
@@ -109,14 +119,39 @@ export const Info = styled.div`
   @media (max-width: 1025px) {
     width: 65%;
   }
-  @media (max-width: 715px) {
-    width: 70%;
+  @media (max-width: 940px) {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    h2 {
+      font-size: 2.3rem;
+    }
+    p {
+      text-align: center;
+    }
+  }
+  @media (max-width: 768px) {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    h2 {
+      font-size: 2.3rem;
+    }
+    p {
+      text-align: center;
+    }
+  }
+  @media (max-width: 574px) {
+    h2 {
+      font-size: 2rem;
+    }
   }
   @media (max-width: 510px) {
     width: 70%;
-    margin-left: 27px;
+
     h2 {
       font-size: 2.1rem;
+      text-align: center;
     }
     p {
       font-size: 12px;
@@ -151,7 +186,10 @@ export const ContainerMovies = styled.div`
 
   @media (max-width: 600px) {
     iframe {
-      width: 85%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       height: 324px;
     }
   }
