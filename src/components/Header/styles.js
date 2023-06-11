@@ -54,7 +54,8 @@ export const Menu = styled.ul`
   }
   /* Estilos para telas menores que 768px */
   @media (max-width: 768px) {
-    display: flex;
+    display: ${(props) =>
+      props.isMobile ? 'none' : 'flex'}; // Oculta o menu em dispositivos móveis
     flex-direction: column;
     align-items: center;
     background: red;

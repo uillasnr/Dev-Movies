@@ -32,7 +32,7 @@ export const Input = styled.input`
     padding-left: 16px;
   }
   @media (max-width: 768px) {
-    display: ${({ showInput }) => (showInput ? 'block' : 'none')};
+    display: ${({ showInput }) => (showInput ? 'none' : 'block')};
     width: 100%;
     padding-left: 16px;
   }
@@ -47,6 +47,7 @@ export const SearchIcon = styled.img`
   z-index: 9;
 
   @media (max-width: 768px) {
+    display: ${({ showInput }) => (showInput ? 'none' : 'block')};
     width: 35px;
     height: 35px;
     margin-left: auto;
