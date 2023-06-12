@@ -7,7 +7,7 @@ export async function getMovies() {
     data: { results }
   } = await api.get('/movie/popular')
 
-  return results[0]
+  return results[8] /// //////////////////////////////////////
 }
 
 export async function getTopMovies() {
@@ -46,7 +46,7 @@ export async function getMovieVideos(movieId) {
   const {
     data: { results }
   } = await api.get(`/movie/${movieId}/videos`)
-  console.log(results)
+
   return results
 }
 
@@ -61,7 +61,7 @@ export async function getMovieCredits(movieId) {
 export async function getMovieSimilar(movieId) {
   const {
     data: { results }
-  } = await api.get(`/movie/${movieId}/similar`)
+  } = await api.get(`/movie/${movieId}/similar`) /// ////////////////////////
 
   return results
 }
@@ -82,13 +82,13 @@ export async function getMovieLists() {
 
 export async function getDetailMovie(id) {
   const { data } = await api.get(`/movie/${id}`)
-  console.log(data)
+
   return data
 }
 // DetailSeries
 export async function getDetailSeries(id) {
   const { data } = await api.get(`/tv/${id}`)
-  console.log(data)
+
   return data
 }
 export async function getSeries() {
@@ -99,7 +99,7 @@ export async function getSeries() {
       page: 2 // Defina o número da página que deseja obter (começando em 1)
     }
   })
-  console.log(results)
+
   return results
 }
 
@@ -121,6 +121,6 @@ export async function getSerieCredits(id) {
   const {
     data: { cast }
   } = await api.get(`/tv/${id}/credits`)
-  console.log(cast)
+
   return cast
 }

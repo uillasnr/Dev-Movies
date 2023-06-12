@@ -14,5 +14,16 @@ export default createGlobalStyle`
 body{
     background: #000000;
 }
+@media screen and (max-width: 445px) {
+    /* Estilos para telas com largura máxima de 768px (versão mobile) */
+    body {
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+}
 
 `

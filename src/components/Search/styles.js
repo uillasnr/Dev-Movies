@@ -94,10 +94,10 @@ export const ContainerSearch = styled.div`
     max-width: 300px;
     background-image: linear-gradient(
       to bottom,
-      rgb(0 0 0),
+      rgb(69 69 69 / 86%),
       rgb(255 255 255 / 11%)
     );
-    transition: background-image 0.6s ease-in-out;
+    transition: background-image 0.6s ease-in-out, transform 0.3s ease-in-out;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 10px;

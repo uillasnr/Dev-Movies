@@ -16,24 +16,41 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
   }
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    padding: 2px;
+    border-radius: 15px;
+    width: 3%;
+    height: 5%;
+    background: #f5f5f5;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
 
   @media (max-width: 768px) {
     width: 90%;
     padding: 20px;
   }
   @media (max-width: 600px) {
-    width: 70%;
-    height: 50%;
+    width: 90%;
+    height: 55%;
     padding: 20px;
   }
   @media (max-width: 445px) {
-    width: 70%;
-    height: 35%;
+    width: 90%;
+    height: 40%;
     padding: 20px;
   }
   @media (max-width: 390px) {
-    width: 65%;
-    height: 20%;
+    width: 90%;
+    height: 40%;
     padding: 20px;
   }
 `
