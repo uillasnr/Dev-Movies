@@ -4,6 +4,9 @@ export const Container = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  @media (max-width: 768px) {
+    margin-top: 70px;
+  }
 `
 export const Input = styled.input`
   font-size: 14px;
@@ -17,6 +20,7 @@ export const Input = styled.input`
   width: 280px;
   max-width: 100%;
   margin: 0px 20px;
+  text-align: center;
 
   &::placeholder {
     text-align: center;
@@ -32,9 +36,9 @@ export const Input = styled.input`
     padding-left: 16px;
   }
   @media (max-width: 768px) {
-    display: ${({ showInput }) => (showInput ? 'none' : 'block')};
+    /*  display: ${({ showInput }) => (showInput ? 'none' : 'block')};
     width: 100%;
-    padding-left: 16px;
+    padding-left: 16px; */
   }
 `
 export const SearchIcon = styled.img`
@@ -47,12 +51,12 @@ export const SearchIcon = styled.img`
   z-index: 9;
 
   @media (max-width: 768px) {
-    display: ${({ showInput }) => (showInput ? 'none' : 'block')};
-    width: 35px;
-    height: 35px;
+    display: flex;
+    width: 20px;
+    height: 20px;
     margin-left: auto;
     margin-right: 10px;
-    margin-top: 5px;
+    margin-top: auto;
     padding: 0;
   }
 `
@@ -69,25 +73,31 @@ export const ContainerSearch = styled.div`
   align-items: center;
   padding: 10px;
   width: 100%;
-  max-width: 300px;
 
   top: 100%;
   left: 0;
 
   p {
     display: flex;
-    justify-content: center;
     align-items: center;
-    direction: rtl;
+    font-weight: 500;
+    color: white;
     gap: 10px;
     width: 270px;
     font-size: 14px;
   }
 
   div {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 300px;
-    background-color: #ffffff;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(0 0 0),
+      rgb(255 255 255 / 11%)
+    );
+    transition: background-image 0.6s ease-in-out;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 10px;

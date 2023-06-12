@@ -18,6 +18,15 @@ export const Background = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
   }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
+  }
 `
 export const Container = styled.div`
   display: flex;
@@ -39,11 +48,14 @@ export const Info = styled.div`
   }
 
   p {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     color: #ffffff;
     margin-top: 30px;
     margin-bottom: 20px;
+    display: inline-block;
+    max-width: 100%;
+    text-align: justify;
   }
   @media (max-width: 768px) {
     width: 70%;

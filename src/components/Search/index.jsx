@@ -10,7 +10,6 @@ function Search() {
   const [search, setSearch] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [showInput, setShowInput] = useState(true)
-
   const searchRef = useRef()
 
   useEffect(() => {
@@ -36,9 +35,11 @@ function Search() {
 
   useEffect(() => {
     function handleOutsideClick(event) {
+      // Atualiza o estado do valor da pesquisa com o que foi digitado na barra
       if (!searchRef.current.contains(event.target)) {
         setSearch('')
         setSearchResults([])
+        setShowInput(false) // Oculta o input ao clicar fora do componente
       }
     }
 
@@ -49,12 +50,8 @@ function Search() {
   }, [])
 
   const handleItemClick = () => {
-    setSearch('')
-    setSearchResults([])
-  }
-
-  const handleButtonClick = () => {
-    setShowInput((prevShowInput) => !prevShowInput)
+    setSearch('') // Limpa o valor da pesquisa
+    setSearchResults([]) // Limpa os resultados da busca
   }
 
   return (
@@ -68,29 +65,27 @@ function Search() {
           showInput={showInput} // Adicione essa linha
         />
       )}
-      <SearchIcon
-        src={SearchInput}
-        onClick={handleButtonClick}
-        alt="Search Icon"
-        showInput={showInput}
-      />
+      <SearchIcon src={SearchInput} alt="Search Icon" showInput={showInput} />
 
       {showInput && search && (
         <ContainerSearch ref={searchRef}>
           <div>
             {searchResults.map((result) => (
               <Link
+                style={{
+                  display: 'flex'
+                }}
                 key={result.id}
                 to={`/detalhe/${result.id}`}
                 onClick={handleItemClick}
               >
-                <p>{result.title}</p>
                 {search && (
                   <Img
                     alt="capa-do-filme"
                     src={getImages(result.poster_path)}
                   />
                 )}
+                <p>{result.title}</p>
               </Link>
             ))}
           </div>
